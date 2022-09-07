@@ -24,7 +24,7 @@ export const SpecificState = atom<string>({
 })
 ```
 
-#### Compnoent
+#### Component
 
 컴포넌트는 함수형 컴포넌트를 사용합니다.  
 `styled-components`를 사용합니다.  
@@ -51,8 +51,8 @@ export default Alert
 
 style은 다음과 같은 순서로 작성하며 각 순서마다 개행을 추가합니다.
 
-1. `position` 관련, `width`, `height`
-2. `display` 관련, `padding`, `margin`
+1. `display` 관련, `padding`, `margin`
+2. `position` 관련, `width`, `height`
 3. `font` 관련
 4. `background` 관련
 5. `border` 관련
