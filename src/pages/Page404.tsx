@@ -1,10 +1,10 @@
-import React from 'react'
+import { VerticalLayout } from 'components/layout'
 
 function Page404() {
   return (
-    <React.Fragment>
-      <div>여기는 not found 페이지입니다.</div>
-    </React.Fragment>
+    <VerticalLayout>
+      <div>여기는 없는 페이지입니다.</div>
+    </VerticalLayout>
   )
 }
 

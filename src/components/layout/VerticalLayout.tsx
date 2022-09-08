@@ -1,5 +1,5 @@
-import Content from 'components/common/Content'
 import React from 'react'
+import Content from 'components/common/Content'
 import Header from './Header'
 import VerticalNavBar from './VerticalNavBar'
 
@@ -7,7 +7,7 @@ interface VerticalLayoutProps {
   children: React.ReactNode
 }
 
-const NAV_BAR_WIDTH = '300px' // 반응형이라면 고정되면 안됨
+const NAV_BAR_WIDTH = '326px' // 반응형이라면 고정되면 안됨
 
 function VerticalLayout({ children }: VerticalLayoutProps) {
   return (
