@@ -7,16 +7,16 @@ import { WhiteRightArrowIcon } from 'assets/image'
 export interface VerticalMenuProps {
   icon: string
   name: string
-  children: menuChildrenType[]
+  children: MenuChildrenType[]
   linkTo?: string
 }
 
-interface menuChildrenType {
+interface MenuChildrenType {
   name: string
   linkTo: string
 }
 
-const Wrapper = styled.div`
+const Wrapper = styled.section`
   display: flex;
   flex-direction: column;
 `

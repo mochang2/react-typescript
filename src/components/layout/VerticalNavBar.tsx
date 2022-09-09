@@ -10,7 +10,7 @@ interface VerticalNavBarProps {
   width: string
 }
 
-const Wrapper = styled.div<{ width: string }>`
+const Wrapper = styled.section<{ width: string }>`
   display: flex;
   flex-direction: column;
   padding: 20px calc(24px - 10px);
@@ -34,7 +34,7 @@ const Logo = styled(Link)`
   }
 `
 
-const DateContainer = styled.div`
+const DateContainer = styled.footer`
   display: flex;
   align-items: center;
   margin: 30px 24px;

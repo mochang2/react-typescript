@@ -1,6 +1,6 @@
 import React from 'react'
 
-export interface ImageProps {
+interface ImageProps {
   src: string
   alt?: string
   width?: string

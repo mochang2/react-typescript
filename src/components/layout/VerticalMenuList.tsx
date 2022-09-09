@@ -11,7 +11,7 @@ import {
 } from 'assets/image'
 import ROUTE from 'routes/routeMap'
 
-const Wrapper = styled.div`
+const Wrapper = styled.nav`
   max-height: calc(100% - 250px);
 
   overflow-y: scroll;

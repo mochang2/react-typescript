@@ -6,7 +6,7 @@ interface ContentProps {
   children: React.ReactNode
 }
 
-const Wrapper = styled.div<{ paddingLeft: string }>`
+const Wrapper = styled.section<{ paddingLeft: string }>`
   padding-left: ${({ paddingLeft }) => paddingLeft};
 `
 
