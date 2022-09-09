@@ -1,11 +1,7 @@
-import { VerticalLayout } from 'components/layout'
+import withLayout from 'hocs/Layout'
 
 function Faq() {
-  return (
-    <VerticalLayout>
-      <div>여기는 FAQ 페이지입니다.</div>
-    </VerticalLayout>
-  )
+  return <div>여기는 FAQ 페이지입니다.</div>
 }
 
-export default Faq
+export default withLayout(Faq)
