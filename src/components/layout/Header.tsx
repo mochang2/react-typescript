@@ -11,6 +11,7 @@ const Wrapper = styled.div<{ paddingLeft: string }>`
   padding: ${({ paddingLeft }) => `20px 4vw 30px ${paddingLeft}`};
 
   font-size: 16px;
+  font-family: 'notosans medium';
 `
 
 // 사진이면 backgroud로 사진 넣어주면 됨

@@ -1,12 +1,14 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import 'settings/index.css'
+import GlobalFont from 'settings/fontStyle'
 import App from './App'
 import reportWebVitals from './reportWebVitals'
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 root.render(
   <React.StrictMode>
+    <GlobalFont />
     <App />
   </React.StrictMode>
 )
