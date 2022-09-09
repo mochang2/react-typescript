@@ -1,15 +1,21 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import {
+  Coupon,
+  Faq,
+  FaqCategoryManagement,
+  FaqDetail,
+  Inquiry,
+  Main,
+  Notice,
+  Page404
+} from 'pages'
 import ROUTE from 'routes/routeMap'
-import Coupon from 'pages/Coupon'
-import Inquiry from 'pages/Inquiry'
-import Notice from 'pages/Notice'
-import Main from 'pages/Main'
-import Faq from 'pages/Faq'
-import Page404 from 'pages/Page404'
 
 function App() {
   const USER_NAME = 'Admin'
   localStorage.setItem('username', USER_NAME)
+
+  // TODO: auth가 생기면 Main 대신 Login페이지로 변경.
 
   return (
     <BrowserRouter>
@@ -17,8 +23,14 @@ function App() {
         <Route path={ROUTE.main} element={<Main />} />
 
         <Route path={ROUTE.coupon} element={<Coupon />} />
+
         <Route path={ROUTE.notice} element={<Notice />} />
         <Route path={ROUTE.faq} element={<Faq />} />
+        <Route
+          path={ROUTE.faqCategoryManagement}
+          element={<FaqCategoryManagement />}
+        />
+        <Route path={ROUTE.faqDetail} element={<FaqDetail />} />
         <Route path={ROUTE.inquiry} element={<Inquiry />} />
 
         <Route path="*" element={<Page404 />} />

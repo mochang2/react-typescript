@@ -3,7 +3,12 @@ const ROUTES = {
   coupon: '/coupon',
   notice: '/notice',
   faq: '/faq',
-  inquiry: '/inquiry'
+  faqCategoryManagement: '/faq/categories',
+  faqDetail: '/faq/:id',
+  inquiry: '/inquiry',
+  passwordInitialization: '/password',
+  changeIp: '/ip',
+  statistics: '/statistics'
 }
 
 export default ROUTES

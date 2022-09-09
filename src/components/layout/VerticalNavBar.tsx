@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { NavLink } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { SideMenuLogo } from 'assets/image'
 import { Image } from 'components/common'
 import VerticalMenuList from './VerticalMenuList'
@@ -25,7 +25,7 @@ const Wrapper = styled.div<{ width: string }>`
   color: white;
 `
 
-const Logo = styled(NavLink)`
+const Logo = styled(Link)`
   width: 50%;
   margin-bottom: 7.2vh;
 

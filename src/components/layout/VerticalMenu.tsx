@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import styled from 'styled-components'
-import { NavLink } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { Image } from 'components/common'
 import { WhiteRightArrowIcon } from 'assets/image'
 
@@ -21,17 +21,17 @@ const Wrapper = styled.div`
   flex-direction: column;
 `
 
-const Category = styled(NavLink)<{ active: boolean }>`
+const Category = styled(Link)<{ $active: boolean }>`
   display: flex;
   align-items: center;
   padding: 0 10px;
 
   height: 45px;
 
-  font-weight: ${({ active }) => (active ? '600' : 'unset')};
-  color: ${({ active }) => (active ? '#000000' : 'unset')};
+  font-weight: ${({ $active }) => ($active ? '600' : 'unset')};
+  color: ${({ $active }) => ($active ? '#000000' : 'unset')};
 
-  background-color: ${({ active }) => (active ? '#ffffff' : 'unset')};
+  background-color: ${({ $active }) => ($active ? '#ffffff' : 'unset')};
 
   border-radius: 10px;
 
@@ -67,7 +67,9 @@ const ChildCategory = styled(Category)`
 `
 
 function VerticalMenu({ icon, name, children, linkTo }: VerticalMenuProps) {
-  const [open, setOpen] = useState(false)
+  const [open, setOpen] = useState(
+    children.some((child) => location.pathname.startsWith(child.linkTo))
+  )
 
   const handleOpen = () => {
     setOpen(!open)
@@ -78,7 +80,9 @@ function VerticalMenu({ icon, name, children, linkTo }: VerticalMenuProps) {
       <ParentCategory
         to={linkTo ?? '#'}
         onClick={handleOpen}
-        active={Boolean(linkTo) && linkTo === location.pathname}
+        $active={
+          Boolean(linkTo) && location.pathname.startsWith(linkTo as string)
+        }
       >
         <LeftContainer>
           <Image src={icon} width={'16px'} />
@@ -93,7 +97,7 @@ function VerticalMenu({ icon, name, children, linkTo }: VerticalMenuProps) {
           return (
             <ChildCategory
               to={child.linkTo}
-              active={child.linkTo === location.pathname}
+              $active={location.pathname.startsWith(child.linkTo)}
               key={index}
             >
               &nbsp;{child.name}

@@ -28,26 +28,17 @@ function VerticalMenuList() {
     {
       icon: WhiteStationManageIcon,
       name: '스테이션 관리',
-      children: [
-        { name: '스테이션', linkTo: ROUTE.main },
-        { name: '스테이션', linkTo: ROUTE.main }
-      ]
+      children: []
     },
     {
       icon: WhiteMoneyIcon,
       name: '정산 관리',
-      children: [
-        { name: '정산', linkTo: ROUTE.main },
-        { name: '정산', linkTo: ROUTE.main }
-      ]
+      children: []
     },
     {
       icon: WhiteProfileIcon,
       name: '회원 관리',
-      children: [
-        { name: '회원', linkTo: ROUTE.main },
-        { name: '회원', linkTo: ROUTE.main }
-      ]
+      children: []
     },
     {
       icon: WhiteCouponIcon,
@@ -58,10 +49,7 @@ function VerticalMenuList() {
     {
       icon: WhiteMessageIcon,
       name: '발송 이력 관리',
-      children: [
-        { name: '발송 이력', linkTo: ROUTE.main },
-        { name: '발송 이력', linkTo: ROUTE.main }
-      ]
+      children: []
     },
     {
       icon: WhiteManageBoardIcon,
@@ -76,9 +64,9 @@ function VerticalMenuList() {
       icon: WhiteManagerSettingIcon,
       name: '관리자 설정',
       children: [
-        { name: '비밀번호 초기화', linkTo: ROUTE.main },
-        { name: 'IP 변경', linkTo: ROUTE.main },
-        { name: '통계', linkTo: ROUTE.main }
+        { name: '비밀번호 초기화', linkTo: ROUTE.passwordInitialization },
+        { name: 'IP 변경', linkTo: ROUTE.changeIp },
+        { name: '통계', linkTo: ROUTE.statistics }
       ]
     }
   ]

@@ -1,0 +1,8 @@
+export { default as Coupon } from './Coupon'
+export { default as Faq } from './Faq'
+export { default as FaqCategoryManagement } from './FaqCategoryManagement'
+export { default as FaqDetail } from './FaqDetail'
+export { default as Inquiry } from './Inquiry'
+export { default as Main } from './Main'
+export { default as Notice } from './Notice'
+export { default as Page404 } from './Page404'
