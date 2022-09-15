@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import Image from './Image'
 import { LoadingGif } from 'assets/gif'
 
-const Wrapper = styled.div`
+const Background = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -18,9 +18,9 @@ const Wrapper = styled.div`
 
 function PageLoading() {
   return (
-    <Wrapper>
+    <Background>
       <Image src={LoadingGif} width={'50vw'} />
-    </Wrapper>
+    </Background>
   )
 }
 

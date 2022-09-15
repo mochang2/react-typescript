@@ -25,12 +25,12 @@ function App() {
         <Route path={ROUTE.coupon} element={<Coupon />} />
 
         <Route path={ROUTE.notice} element={<Notice />} />
+        <Route path={ROUTE.faqDetail} element={<FaqDetail />} />
         <Route path={ROUTE.faq} element={<Faq />} />
         <Route
           path={ROUTE.faqCategoryManagement}
           element={<FaqCategoryManagement />}
         />
-        <Route path={ROUTE.faqDetail} element={<FaqDetail />} />
         <Route path={ROUTE.inquiry} element={<Inquiry />} />
 
         <Route path="*" element={<Page404 />} />

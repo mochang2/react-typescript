@@ -9,6 +9,7 @@ import {
 } from 'components/common'
 import { getDate } from 'libs/datetime.helper'
 import api from 'apis/api'
+import ROUTES from 'routes/routeMap'
 import { FaqType } from 'types'
 
 interface FaqListProps {
@@ -174,7 +175,9 @@ function FaqList({ faqs, fetchFaqs }: FaqListProps) {
               <Text>{faq.category}</Text>
             </DataCell>
             <DataCell>
-              <TitleLink to="#">{faq.title}</TitleLink>
+              <TitleLink to={`${ROUTES.notice}/${faq.no}`}>
+                {faq.title}
+              </TitleLink>
             </DataCell>
             <DataCell>{getDate(faq.createdAt)}</DataCell>
             <DataCell>

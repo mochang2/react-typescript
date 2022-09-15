@@ -208,6 +208,28 @@ const handlers = [
   rest.delete('/api/faq', (req, res, ctx) => {
     console.log(req.body)
     return res(ctx.status(200), ctx.delay(100))
+  }),
+  rest.get('/api/faq/:id', (_, res, ctx) => {
+    return res(
+      ctx.status(200),
+      ctx.delay(100),
+      ctx.json({
+        faq: {
+          no: 1,
+          category: {
+            id: 1,
+            name: '카테고리1'
+          },
+          title:
+            '게시글 상세보기의 제목입니다. 이거는 아무리 길어져도 ellipsis 처리하지 않습니다. 게시글 상세보기의 제목입니다. 이거는 아무리 길어져도 ellipsis 처리하지 않습니다. ',
+          content:
+            '게시글 상세보기의 내용입니다. 이것도 아무리 길어져도 ellipsis 처리하지 않습니다. 게시글 상세보기의 내용입니다. 이것도 아무리 길어져도 ellipsis 처리하지 않습니다.'
+        }
+      })
+    )
+  }),
+  rest.delete('/api/faq/:id', (_, res, ctx) => {
+    return res(ctx.status(200), ctx.delay(100))
   })
 ]
 

@@ -6,4 +6,14 @@ declare module 'types' {
     createdAt: string
     writer: string
   }
+
+  interface FaqDetailType {
+    no: number
+    category: {
+      id: number
+      name: string
+    }
+    title: string
+    content: string
+  }
 }

@@ -98,7 +98,11 @@ function Pagination({
         </Item>
       )}
       {getPageNumbers().map((number) => (
-        <Item $active={currentPage === number} aria-label={number.toString()}>
+        <Item
+          key={number}
+          $active={currentPage === number}
+          aria-label={number.toString()}
+        >
           {number}
         </Item>
       ))}

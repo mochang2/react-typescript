@@ -1,5 +1,6 @@
 export { default as Checkbox } from './Checkbox'
 export { default as Content } from './Content'
+export { default as Dialogbox } from './Dialogbox'
 export { default as Image } from './Image'
 export { default as PageLoading } from './PageLoading'
 export { default as Pagination } from './Pagination'

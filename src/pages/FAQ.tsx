@@ -28,7 +28,7 @@ const Filter = styled.div`
   align-items: center;
   margin-bottom: 3.6vh;
 
-  & input {
+  & > input {
     margin: 0 10px 0 18px;
   }
 `
@@ -50,7 +50,7 @@ const ButtonContainer = styled.div`
   position: absolute;
   right: 0;
 
-  & button {
+  & > button {
     margin-right: 8px;
   }
 `
@@ -74,7 +74,8 @@ function Faq() {
 
       setFaqs(faqs)
     } catch (err) {
-      // do notiong
+      alert('faq를 가져오는데 실패했습니다.')
+      setFaqs([])
     }
   }
 
