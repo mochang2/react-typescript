@@ -2,7 +2,7 @@ import { useState } from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import { Image } from 'components/common'
-import { WhiteRightArrowIcon } from 'assets/image'
+import { WhiteRightArrow } from 'assets/image'
 
 export interface VerticalMenuProps {
   icon: string
@@ -89,7 +89,7 @@ function VerticalMenu({ icon, name, children, linkTo }: VerticalMenuProps) {
           &nbsp;{name}
         </LeftContainer>
         <RightContainer open={open}>
-          {children.length !== 0 && <Image src={WhiteRightArrowIcon} />}
+          {children.length !== 0 && <Image src={WhiteRightArrow} />}
         </RightContainer>
       </ParentCategory>
       {open &&

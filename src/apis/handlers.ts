@@ -1,6 +1,6 @@
 import { rest, setupWorker } from 'msw'
 
-// TODO 인증이 추가되면 req.cookies 이용해서 error도 추가
+// TODO: 인증이 추가되면 req.cookies 이용해서 error도 추가
 
 const handlers = [
   rest.get('/api/faq/categories', (_, res, ctx) => {
@@ -32,28 +32,28 @@ const handlers = [
       ctx.json({
         faqs: [
           {
-            id: 1,
+            no: 1,
             category: '카테고리1',
             title: '공지사항 제목입니다.',
             createdAt: '2022-01-17 04:33:12',
             writer: 'Admin'
           },
           {
-            id: 2,
+            no: 2,
             category: '카테고리2',
             title: '공지사항 제목입니다.',
             createdAt: '2022-01-17 04:33:12',
             writer: 'Admin'
           },
           {
-            id: 3,
+            no: 3,
             category: '카테고리3카테고리3카테고리3',
             title: '공지사항 제목입니다.',
             createdAt: '2022-01-17 04:33:12',
             writer: 'Admin'
           },
           {
-            id: 4,
+            no: 4,
             category: '카테고리1',
             title:
               '공지사항 제목입니다.공지사항 제목입니다.공지사항 제목입니다.공지사항 제목입니다.공지사항 제목입니다.공지사항 제목입니다.',
@@ -61,56 +61,141 @@ const handlers = [
             writer: 'Admin'
           },
           {
-            id: 5,
+            no: 5,
             category: '카테고리2',
             title: '공지사항 제목입니다.',
             createdAt: '2022-01-17 04:33:12',
             writer: 'Admin'
           },
           {
-            id: 6,
+            no: 6,
             category: '카테고리3카테고리3카테고리3',
             title: '공지사항 제목입니다.',
             createdAt: '2022-01-17 04:33:12',
             writer: 'Admin'
           },
           {
-            id: 7,
+            no: 7,
             category: '카테고리1',
             title: '공지사항 제목입니다.',
             createdAt: '2022-01-17 04:33:12',
             writer: 'Admin'
           },
           {
-            id: 8,
+            no: 8,
             category: '카테고리2',
             title: '공지사항 제목입니다.',
             createdAt: '2022-01-17 04:33:12',
             writer: 'Admin'
           },
           {
-            id: 9,
+            no: 9,
             category: '카테고리3카테고리3카테고리3',
             title: '공지사항 제목입니다.',
             createdAt: '2022-01-17 04:33:12',
             writer: 'Admin'
           },
           {
-            id: 10,
+            no: 10,
             category: '카테고리1',
             title: '공지사항 제목입니다.',
             createdAt: '2022-01-17 04:33:12',
             writer: 'Admin'
           },
           {
-            id: 11,
+            no: 11,
+            category: '카테고리11',
+            title: '공지사항 제목입니다.',
+            createdAt: '2022-01-17 04:33:12',
+            writer: 'Admin'
+          },
+          {
+            no: 12,
+            category: '카테고리3카테고리3카테고리3',
+            title: '공지사항 제목입니다.',
+            createdAt: '2022-01-17 04:33:12',
+            writer: 'Admin'
+          },
+          {
+            no: 13,
+            category: '카테고리1',
+            title: '공지사항 제목입니다.',
+            createdAt: '2022-01-17 04:33:12',
+            writer: 'Admin'
+          },
+          {
+            no: 14,
             category: '카테고리2',
             title: '공지사항 제목입니다.',
             createdAt: '2022-01-17 04:33:12',
             writer: 'Admin'
           },
           {
-            id: 12,
+            no: 15,
+            category: '카테고리3카테고리3카테고리3',
+            title: '공지사항 제목입니다.',
+            createdAt: '2022-01-17 04:33:12',
+            writer: 'Admin'
+          },
+          {
+            no: 16,
+            category: '카테고리1',
+            title:
+              '공지사항 제목입니다.공지사항 제목입니다.공지사항 제목입니다.공지사항 제목입니다.공지사항 제목입니다.공지사항 제목입니다.',
+            createdAt: '2022-01-17 04:33:12',
+            writer: 'Admin'
+          },
+          {
+            no: 17,
+            category: '카테고리2',
+            title: '공지사항 제목입니다.',
+            createdAt: '2022-01-17 04:33:12',
+            writer: 'Admin'
+          },
+          {
+            no: 18,
+            category: '카테고리3카테고리3카테고리3',
+            title: '공지사항 제목입니다.',
+            createdAt: '2022-01-17 04:33:12',
+            writer: 'Admin'
+          },
+          {
+            no: 19,
+            category: '카테고리1',
+            title: '공지사항 제목입니다.',
+            createdAt: '2022-01-17 04:33:12',
+            writer: 'Admin'
+          },
+          {
+            no: 20,
+            category: '카테고리2',
+            title: '공지사항 제목입니다.',
+            createdAt: '2022-01-17 04:33:12',
+            writer: 'Admin'
+          },
+          {
+            no: 21,
+            category: '카테고리3카테고리3카테고리3',
+            title: '공지사항 제목입니다.',
+            createdAt: '2022-01-17 04:33:12',
+            writer: 'Admin'
+          },
+          {
+            no: 22,
+            category: '카테고리1',
+            title: '공지사항 제목입니다.',
+            createdAt: '2022-01-17 04:33:12',
+            writer: 'Admin'
+          },
+          {
+            no: 23,
+            category: '카테고리2',
+            title: '공지사항 제목입니다.',
+            createdAt: '2022-01-17 04:33:12',
+            writer: 'Admin'
+          },
+          {
+            no: 24,
             category: '카테고리3카테고리3카테고리3',
             title: '공지사항 제목입니다.',
             createdAt: '2022-01-17 04:33:12',
@@ -119,6 +204,10 @@ const handlers = [
         ]
       })
     )
+  }),
+  rest.delete('/api/faq', (req, res, ctx) => {
+    console.log(req.body)
+    return res(ctx.status(200), ctx.delay(100))
   })
 ]
 

@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client'
 import 'settings/index.css'
 import GlobalFont from 'settings/fontStyle'
 import App from './App'
+import { RecoilRoot } from 'recoil'
 import reportWebVitals from './reportWebVitals'
 
 if (process.env.NODE_ENV === 'development') {
@@ -15,7 +16,9 @@ const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 root.render(
   <React.StrictMode>
     <GlobalFont />
-    <App />
+    <RecoilRoot>
+      <App />
+    </RecoilRoot>
   </React.StrictMode>
 )
 

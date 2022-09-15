@@ -13,12 +13,12 @@ interface VerticalNavBarProps {
 const Wrapper = styled.section<{ width: string }>`
   display: flex;
   flex-direction: column;
-  padding: 20px calc(24px - 10px);
+  padding: 20px 14px;
 
   position: fixed;
   left: 0;
   top: 0;
-  width: calc(${({ width }) => width} - 48px);
+  width: calc(${({ width }) => width} - 28px);
   height: 100%;
 
   background-color: black;

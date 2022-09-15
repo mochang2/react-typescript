@@ -1,20 +1,13 @@
-import React from 'react'
-
-interface ImageProps {
-  src: string
-  alt?: string
-  width?: string
-  height?: string
-  style?: React.CSSProperties
-}
+import { ImgHTMLAttributes } from 'react'
 
 const Image = ({
   src,
   alt = '사진',
   width = '100%',
   height = 'auto',
-  style
-}: ImageProps) => {
+  style,
+  ...rest
+}: ImgHTMLAttributes<HTMLImageElement>) => {
   if (!src) {
     throw new Error('src가 필요합니다.')
   }
@@ -26,6 +19,7 @@ const Image = ({
       width={width}
       height={height}
       style={{ ...style }}
+      {...rest}
     />
   )
 }

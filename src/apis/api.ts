@@ -9,29 +9,28 @@ const api = axios.create({
 })
 
 api.interceptors.request.use(
-  function (config) {
+  (config) => {
     // 요청 성공 직전
     // axios 설정값을 넣음
     return config
   },
-  function (error) {
-    // 요청 에러 직전
+  (error) => {
+    console.error('API 요청 중 에러 발생')
+
     return Promise.reject(error)
   }
 )
 
 api.interceptors.response.use(
-  function (response) {
+  (response) => {
     // http status가 200
     // 응답 성공 직전
     // .then(
     return response
   },
 
-  function (error) {
-    // http status가 200이 아닌 경우
-    // 응답 에러 직전
-    // .catch()
+  (error) => {
+    console.error('API 응답 중 에러 발생')
 
     return Promise.reject(error)
   }
