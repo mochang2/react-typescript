@@ -4,6 +4,7 @@ import {
   Faq,
   FaqCategoryManagement,
   FaqDetail,
+  FaqRegister,
   Inquiry,
   Main,
   Notice,
@@ -26,6 +27,7 @@ function App() {
 
         <Route path={ROUTE.notice} element={<Notice />} />
         <Route path={ROUTE.faqDetail} element={<FaqDetail />} />
+        <Route path={ROUTE.faqRegister} element={<FaqRegister />} />
         <Route path={ROUTE.faq} element={<Faq />} />
         <Route
           path={ROUTE.faqCategoryManagement}

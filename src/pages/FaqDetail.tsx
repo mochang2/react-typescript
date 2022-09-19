@@ -9,9 +9,9 @@ import {
   Dialogbox
 } from 'components/common'
 import api from 'apis/api'
-import { FaqDetailType } from 'types'
-import FaqDetailContent from 'components/faq/FaqDetailContent'
+import { FaqDetailContent } from 'components/faq'
 import ROUTES from 'routes/routeMap'
+import { FaqDetailType } from 'types'
 
 const Wrapper = styled.section`
   margin: 0 1.2vw 9.6vh;

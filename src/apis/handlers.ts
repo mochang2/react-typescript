@@ -230,6 +230,9 @@ const handlers = [
   }),
   rest.delete('/api/faq/:id', (_, res, ctx) => {
     return res(ctx.status(200), ctx.delay(100))
+  }),
+  rest.post('/api/faq', (_, res, ctx) => {
+    return res(ctx.status(200), ctx.delay(100))
   })
 ]
 

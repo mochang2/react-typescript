@@ -9,13 +9,18 @@ import {
   TransparentButton,
   PageLoading
 } from 'components/common'
+import { Link } from 'react-router-dom'
 import { FaqList } from 'components/faq'
 import { useFaqCategories } from 'hooks'
 import { RedDelete } from 'assets/image'
-import { FaqType } from 'types'
+import ROUTES from 'routes/routeMap'
 import api from 'apis/api'
+import { FaqType } from 'types'
 
-const DEFAULT_OPTION = '전체'
+const defaultOption = {
+  id: 0,
+  name: '전체'
+}
 
 const Wrapper = styled.section`
   margin: 0 1.2vw 9.6vh;
@@ -28,7 +33,7 @@ const Filter = styled.div`
   align-items: center;
   margin-bottom: 3.6vh;
 
-  & > input {
+  & input {
     margin: 0 10px 0 18px;
   }
 `
@@ -57,10 +62,10 @@ const ButtonContainer = styled.div`
 
 function Faq() {
   const [faqs, setFaqs] = useState<FaqType[] | null>(null)
-  const [categoryOption, setCategoryOption] = useState(DEFAULT_OPTION)
+  const [categoryOption, setCategoryOption] = useState(defaultOption.name)
   const [searchText, setSearchText] = useState('')
 
-  const { faqCategories } = useFaqCategories()
+  const { faqCategories } = useFaqCategories(defaultOption)
 
   useEffect(() => {
     fetchFaqs()
@@ -81,7 +86,8 @@ function Faq() {
 
   const handleCategoryOption = (event: MouseEvent) => {
     const element = event.target as HTMLElement
-    setCategoryOption(element.ariaValueText as string)
+    const index = parseInt(element.ariaValueText as string)
+    setCategoryOption(faqCategories[index].name)
   }
 
   const handleSearchText = (event: ChangeEvent<HTMLInputElement>) => {
@@ -89,12 +95,12 @@ function Faq() {
   }
 
   const clearFaqFilter = () => {
-    setCategoryOption(DEFAULT_OPTION)
+    setCategoryOption(defaultOption.name)
     setSearchText('')
   }
 
   const getFilteredFaqs = (faqs: FaqType[]): FaqType[] => {
-    const category = categoryOption === DEFAULT_OPTION ? '' : categoryOption
+    const category = categoryOption === defaultOption.name ? '' : categoryOption
     return faqs.filter(
       (faq) => faq.category.includes(category) && faq.title.includes(searchText)
     )
@@ -107,13 +113,12 @@ function Faq() {
       <Header content={'FAQ'} route={'게시판 관리 > FAQ'} />
       <Filter>
         <Selection
-          defaultOption={DEFAULT_OPTION}
           options={faqCategories}
           selectedOption={categoryOption}
-          onClickOption={handleCategoryOption}
+          onClick={handleCategoryOption}
         />
         <SearchInput value={searchText} onChangeValue={handleSearchText} />
-        {(categoryOption !== DEFAULT_OPTION || searchText !== '') && (
+        {(categoryOption !== defaultOption.name || searchText !== '') && (
           <ClearFilter onClick={clearFaqFilter}>
             <Image src={RedDelete} width={'16px'} />
             초기화
@@ -124,8 +129,8 @@ function Faq() {
         <TransparentButton onClick={(e) => console.log(e)}>
           카테고리 관리
         </TransparentButton>
-        <TransparentButton onClick={(e) => console.log(e)} color={'#DF1F26'}>
-          FAQ 등록
+        <TransparentButton color={'#DF1F26'}>
+          <Link to={ROUTES.faqRegister}>FAQ 등록</Link>
         </TransparentButton>
       </ButtonContainer>
       {faqs ? (

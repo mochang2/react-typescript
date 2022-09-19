@@ -3,6 +3,7 @@ const ROUTES = {
   coupon: '/coupon',
   notice: '/notice',
   faqDetail: '/notice/:id',
+  faqRegister: '/notice/register',
   faq: '/faq',
   faqCategoryManagement: '/faq/categories',
   inquiry: '/inquiry',

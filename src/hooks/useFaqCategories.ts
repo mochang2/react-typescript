@@ -1,8 +1,9 @@
 import { useRecoilState } from 'recoil'
 import { FaqCategoryState } from 'stores/faq'
 import api from 'apis/api'
+import { FaqCategoryType } from 'types'
 
-const useFaqCategories = () => {
+const useFaqCategories = (defaultCategory?: FaqCategoryType) => {
   const [faqCategories, setFaqCategories] = useRecoilState(FaqCategoryState)
 
   async function fetchFaqCategories() {
@@ -22,7 +23,9 @@ const useFaqCategories = () => {
   }
 
   return {
-    faqCategories,
+    faqCategories: defaultCategory
+      ? [{ ...defaultCategory }, ...faqCategories]
+      : faqCategories,
     fetchFaqCategories
   }
 }

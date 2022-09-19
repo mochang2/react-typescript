@@ -16,4 +16,10 @@ declare module 'types' {
     title: string
     content: string
   }
+
+  interface FaqFormType {
+    categoryId: number
+    title: string
+    content: string
+  }
 }

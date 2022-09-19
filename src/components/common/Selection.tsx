@@ -7,8 +7,7 @@ import { FaqCategoryType } from 'types'
 interface SelectionProps {
   options: FaqCategoryType[]
   selectedOption: string
-  defaultOption?: string
-  onClickOption?: (event: MouseEvent) => void
+  onClick?: (event: MouseEvent) => void
 }
 
 const Background = styled.div`
@@ -26,7 +25,7 @@ const Wrapper = styled.section`
   width: 128px;
   height: 36px;
 
-  border: 2px solid #7e7e7e;
+  border: 2px solid currentColor;
   border-radius: 10px;
 `
 
@@ -38,9 +37,13 @@ const SelectedBox = styled.span`
   width: 100%;
   height: 100%;
 
+  color: #000000;
+
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+
+  cursor: default;
 `
 
 const Select = styled.ul<{ $toggle: boolean }>`
@@ -53,7 +56,7 @@ const Select = styled.ul<{ $toggle: boolean }>`
   top: 40px;
   width: 120px;
 
-  border: 2px solid black;
+  color: #000000;
 
   background-color: #ffffff;
   border: 1px solid #c4c4c4;
@@ -84,12 +87,7 @@ const Option = styled.li<{ $active?: boolean }>`
   }
 `
 
-function Selection({
-  defaultOption,
-  options,
-  selectedOption,
-  onClickOption
-}: SelectionProps) {
+function Selection({ options, selectedOption, onClick }: SelectionProps) {
   const [toggle, setToggle] = useState(false)
 
   const offToggle = () => {
@@ -110,18 +108,10 @@ function Selection({
           {selectedOption} &nbsp;
           <Image src={WhiteDownArrow} width={'11px'} height={'7px'} />
         </SelectedBox>
-        <Select $toggle={toggle} onClick={onClickOption}>
-          {Boolean(defaultOption) && (
+        <Select $toggle={toggle} onClick={onClick}>
+          {options.map((option, index) => (
             <Option
-              aria-valuetext={defaultOption}
-              $active={selectedOption === defaultOption}
-            >
-              {defaultOption}
-            </Option>
-          )}
-          {options.map((option) => (
-            <Option
-              aria-valuetext={option.name}
+              aria-valuetext={index.toString()}
               key={option.id}
               $active={selectedOption === option.name}
             >

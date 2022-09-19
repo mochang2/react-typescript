@@ -6,7 +6,7 @@ interface FaqContentProps {
   content: string
 }
 
-const Container = styled.div`
+const Wrapper = styled.div`
   display: grid;
   grid-template-rows: minmax(85px, auto) minmax(726px, auto);
   grid-template-columns: 160px auto;
@@ -58,11 +58,11 @@ const Content = styled.div`
 
 function FaqDetailContent({ category, title, content }: FaqContentProps) {
   return (
-    <Container>
+    <Wrapper>
       <Category>{category}</Category>
       <Title>{title}</Title>
       <Content>{content}</Content>
-    </Container>
+    </Wrapper>
   )
 }
 
