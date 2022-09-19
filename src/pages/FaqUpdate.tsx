@@ -1,12 +1,12 @@
 import { useState } from 'react'
 import styled from 'styled-components'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
 import withLayout from 'hocs/Layout'
 import { Header, PageLoading } from 'components/common'
 import { FaqFormContent } from 'components/faq'
 import api from 'apis/api'
 import ROUTES from 'routes/routeMap'
-import { FaqFormType } from 'types'
+import { FaqFormType, FaqLocationType } from 'types'
 
 const Wrapper = styled.section`
   margin: 0 1.2vw 9.6vh;
@@ -14,23 +14,27 @@ const Wrapper = styled.section`
   position: relative;
 `
 
-function FaqRegister() {
-  const navigate = useNavigate()
+function FaqUpdate() {
   const [isLoading, setIsLoading] = useState(false)
 
-  const registerFaq = async ({ categoryId, title, content }: FaqFormType) => {
+  const navigate = useNavigate()
+  const location = useLocation()
+
+  const updateFaq = async ({ categoryId, title, content }: FaqFormType) => {
     try {
       setIsLoading(true)
 
-      await api.post('/faq', {
+      const { id } = location.state as FaqLocationType
+
+      await api.put(`/faq/${id}`, {
         categoryId,
         title,
         content
       })
 
-      navigate(ROUTES.faq)
+      navigate(`${ROUTES.notice}/${id}`)
     } catch (err) {
-      alert('FAQ 작성에 실패했습니다.')
+      alert('FAQ 수정에 실패했습니다.')
     } finally {
       setIsLoading(false)
     }
@@ -38,11 +42,11 @@ function FaqRegister() {
 
   return (
     <Wrapper>
-      <Header content={'FAQ'} route={'게시판 관리 > FAQ > FAQ 작성'} />
-      <FaqFormContent onClick={registerFaq} />
+      <Header content={'FAQ'} route={'게시판 관리 > FAQ > FAQ 수정'} />
+      <FaqFormContent onClick={updateFaq} />
       {isLoading && <PageLoading />}
     </Wrapper>
   )
 }
 
-export default withLayout(FaqRegister)
+export default withLayout(FaqUpdate)

@@ -12,6 +12,7 @@ import api from 'apis/api'
 import { FaqDetailContent } from 'components/faq'
 import ROUTES from 'routes/routeMap'
 import { FaqDetailType } from 'types'
+import { useFaqCategories } from 'hooks'
 
 const Wrapper = styled.section`
   margin: 0 1.2vw 9.6vh;
@@ -31,10 +32,12 @@ const ButtonContainer = styled.div`
 `
 
 function FaqDetail() {
+  const [isLoading, setIsLoading] = useState(false)
   const [faq, setFaq] = useState<FaqDetailType | null>(null)
   const [openDialog, setOpenDialog] = useState(false)
   const navigate = useNavigate()
   const { id } = useParams()
+  const { faqCategories } = useFaqCategories()
 
   useEffect(() => {
     fetchFaq()
@@ -42,6 +45,8 @@ function FaqDetail() {
 
   const fetchFaq = async () => {
     try {
+      setIsLoading(true)
+
       const {
         data: { faq }
       } = await api.get(`/faq/${id}`)
@@ -49,12 +54,24 @@ function FaqDetail() {
       setFaq(faq)
     } catch (err) {
       // do notiong
+    } finally {
+      setIsLoading(false)
     }
   }
 
   const reviseFaq = () => {
-    // TODO: FAQ 작성 구현 후 => 수정 구현
-    return
+    const index = faqCategories?.findIndex(
+      (category) => category.id === faq?.category.id
+    )
+
+    navigate(ROUTES.faqUpdate, {
+      state: {
+        id,
+        categoryIndex: index === -1 ? 0 : index,
+        title: faq?.title ?? '',
+        content: faq?.content ?? ''
+      }
+    })
   }
 
   const deleteFaq = () => {
@@ -80,7 +97,7 @@ function FaqDetail() {
   return (
     <Wrapper>
       <Header content={'FAQ'} route={'게시판 관리 > FAQ > FAQ 상세'} />
-      {faq ? (
+      {faq && (
         <Fragment>
           <FaqDetailContent
             category={faq.category.name}
@@ -94,9 +111,8 @@ function FaqDetail() {
             <TransparentButton onClick={deleteFaq}>삭제</TransparentButton>
           </ButtonContainer>
         </Fragment>
-      ) : (
-        <PageLoading />
       )}
+      {isLoading && <PageLoading />}
       <Dialogbox
         open={openDialog}
         title={'정말로 삭제하시겠습니까?'}

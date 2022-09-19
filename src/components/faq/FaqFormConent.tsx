@@ -3,10 +3,10 @@ import { useLocation } from 'react-router-dom'
 import { Selection, TransparentButton } from 'components/common'
 import styled from 'styled-components'
 import { useFaqCategories } from 'hooks'
-import { FaqFormType } from 'types'
+import { FaqFormType, FaqLocationType } from 'types'
 
 interface FaqFormContentProps {
-  onRegister: ({ categoryId, title, content }: FaqFormType) => void
+  onClick: ({ categoryId, title, content }: FaqFormType) => void
 }
 
 const FormContainer = styled.div`
@@ -119,14 +119,16 @@ const RegisterButton = styled.button`
   }
 `
 
-function FaqFormContent({ onRegister }: FaqFormContentProps) {
-  const location = useLocation()
+function FaqFormContent({ onClick }: FaqFormContentProps) {
+  // state의 초기값을 위해 다른 훅을 useState 위에 선언
+  // primitive type
+  const locationState = useLocation().state as FaqLocationType
 
-  // primitive type이므로 state의 초기값으로 사용
-  // TODO: 수정하기할 때 데이터 전달
-  const [categoryIndex, setCategoryIndex] = useState(0)
-  const [title, setTitle] = useState('')
-  const [content, setContent] = useState('')
+  const [categoryIndex, setCategoryIndex] = useState(
+    locationState.categoryIndex ?? 0
+  )
+  const [title, setTitle] = useState(locationState.title ?? '')
+  const [content, setContent] = useState(locationState.content ?? '')
   const { faqCategories } = useFaqCategories()
 
   const handleCategoryIndex = (event: MouseEvent) => {
@@ -149,7 +151,7 @@ function FaqFormContent({ onRegister }: FaqFormContentProps) {
     if (title.length === 0) {
       alert('제목을 입력해주세요.')
     } else {
-      onRegister({
+      onClick({
         categoryId: faqCategories[categoryIndex].id,
         title,
         content
@@ -163,7 +165,7 @@ function FaqFormContent({ onRegister }: FaqFormContentProps) {
         <Category>
           <Selection
             options={faqCategories}
-            selectedOption={faqCategories[categoryIndex].name}
+            selectedOption={faqCategories[categoryIndex]?.name}
             onClick={handleCategoryIndex}
           />
         </Category>

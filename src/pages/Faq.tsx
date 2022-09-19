@@ -18,7 +18,7 @@ import api from 'apis/api'
 import { FaqType } from 'types'
 
 const defaultOption = {
-  id: 0,
+  id: -1,
   name: '전체'
 }
 
@@ -61,7 +61,8 @@ const ButtonContainer = styled.div`
 `
 
 function Faq() {
-  const [faqs, setFaqs] = useState<FaqType[] | null>(null)
+  const [isLoading, setIsLoading] = useState(false)
+  const [faqs, setFaqs] = useState<FaqType[]>([])
   const [categoryOption, setCategoryOption] = useState(defaultOption.name)
   const [searchText, setSearchText] = useState('')
 
@@ -73,6 +74,8 @@ function Faq() {
 
   const fetchFaqs = async () => {
     try {
+      setIsLoading(true)
+
       const {
         data: { faqs }
       } = await api.get('/faq')
@@ -80,7 +83,8 @@ function Faq() {
       setFaqs(faqs)
     } catch (err) {
       alert('faq를 가져오는데 실패했습니다.')
-      setFaqs([])
+    } finally {
+      setIsLoading(false)
     }
   }
 
@@ -133,11 +137,10 @@ function Faq() {
           <Link to={ROUTES.faqRegister}>FAQ 등록</Link>
         </TransparentButton>
       </ButtonContainer>
-      {faqs ? (
+      {faqs.length !== 0 && (
         <FaqList faqs={getFilteredFaqs(faqs)} fetchFaqs={fetchFaqs} />
-      ) : (
-        <PageLoading />
       )}
+      {isLoading && <PageLoading />}
     </Wrapper>
   )
 }

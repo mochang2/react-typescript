@@ -14,7 +14,7 @@ const useFaqCategories = (defaultCategory?: FaqCategoryType) => {
 
       setFaqCategories(categories)
     } catch (err) {
-      // do nothing
+      alert('카테고리를 가져오는데 실패했습니다. 제목을 먼저 입력해주세요.')
     }
   }
 

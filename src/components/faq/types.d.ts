@@ -22,4 +22,11 @@ declare module 'types' {
     title: string
     content: string
   }
+
+  interface FaqLocationType {
+    id: number
+    categoryIndex: number
+    title: string
+    content: string
+  }
 }

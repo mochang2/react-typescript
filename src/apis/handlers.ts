@@ -206,7 +206,6 @@ const handlers = [
     )
   }),
   rest.delete('/api/faq', (req, res, ctx) => {
-    console.log(req.body)
     return res(ctx.status(200), ctx.delay(100))
   }),
   rest.get('/api/faq/:id', (_, res, ctx) => {
@@ -232,6 +231,10 @@ const handlers = [
     return res(ctx.status(200), ctx.delay(100))
   }),
   rest.post('/api/faq', (_, res, ctx) => {
+    return res(ctx.status(200), ctx.delay(100))
+  }),
+  rest.put('/api/faq/:id', (req, res, ctx) => {
+    console.log(req.body)
     return res(ctx.status(200), ctx.delay(100))
   })
 ]
