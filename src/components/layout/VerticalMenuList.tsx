@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import VerticalMenu, { VerticalMenuProps } from './VerticalMenu'
+import VerticalMenu from './VerticalMenu'
 import {
   WhiteCouponIcon,
   WhiteManageBoardIcon,
@@ -10,6 +10,7 @@ import {
   WhiteStationManageIcon
 } from 'assets/image'
 import ROUTE from 'routes/routeMap'
+import { VerticalMenuProps } from 'types'
 
 const Wrapper = styled.nav`
   max-height: calc(100% - 250px);

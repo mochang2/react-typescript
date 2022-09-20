@@ -1,10 +1,11 @@
+import { ReactNode } from 'react'
 import styled from 'styled-components'
-import TransparentButton from './TransparentButton'
 
 interface DialogboxProps {
   open: boolean
-  title: string
-  onAgree?: () => void
+  title?: string
+  subtitle?: string
+  children?: ReactNode
   onClose?: () => void
 }
 
@@ -23,9 +24,6 @@ const Background = styled.div`
 `
 
 const Wrapper = styled.section`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
   padding: 8px 16px;
 
   min-width: 8vw;
@@ -40,24 +38,27 @@ const Wrapper = styled.section`
     rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 `
 
-const ButtonContainer = styled.div`
-  display: flex;
-  justify-content: space-around;
+const Title = styled.h3`
+  margin: 1.2vh 1.2vw;
 `
 
-function Dialogbox({ open, title, onAgree, onClose }: DialogboxProps) {
+const SubTitle = styled.h5`
+  margin: 1vh 1vw;
+`
+
+function Dialogbox({
+  open,
+  title,
+  subtitle,
+  children,
+  onClose
+}: DialogboxProps) {
   return open ? (
     <Background onClick={onClose}>
       <Wrapper>
-        {title}
-        <ButtonContainer>
-          {Boolean(onAgree) && (
-            <TransparentButton onClick={onAgree}>예</TransparentButton>
-          )}
-          {Boolean(onClose) && (
-            <TransparentButton onClick={onClose}>아니오</TransparentButton>
-          )}
-        </ButtonContainer>
+        {Boolean(title) && <Title>{title}</Title>}
+        {Boolean(subtitle) && <SubTitle>{subtitle}</SubTitle>}
+        {children}
       </Wrapper>
     </Background>
   ) : (

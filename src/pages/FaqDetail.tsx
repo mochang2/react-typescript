@@ -21,14 +21,18 @@ const Wrapper = styled.section`
 `
 
 const ButtonContainer = styled.div`
-  margin-top: 4vh;
-
   display: flex;
   justify-content: flex-end;
+  margin-top: 4vh;
 
   & > button {
     margin-right: 8px;
   }
+`
+
+const DialogButtonContainer = styled.div`
+  display: flex;
+  justify-content: space-around;
 `
 
 function FaqDetail() {
@@ -115,10 +119,14 @@ function FaqDetail() {
       {isLoading && <PageLoading />}
       <Dialogbox
         open={openDialog}
-        title={'정말로 삭제하시겠습니까?'}
-        onAgree={handleAgreement}
         onClose={handleClose}
-      />
+        title="정말로 삭제하시겠습니까?"
+      >
+        <DialogButtonContainer>
+          <TransparentButton onClick={handleAgreement}>예</TransparentButton>
+          <TransparentButton onClick={handleClose}>아니오</TransparentButton>
+        </DialogButtonContainer>
+      </Dialogbox>
     </Wrapper>
   )
 }

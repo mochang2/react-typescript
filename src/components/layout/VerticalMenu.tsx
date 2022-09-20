@@ -3,18 +3,7 @@ import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import { Image } from 'components/common'
 import { WhiteRightArrow } from 'assets/image'
-
-export interface VerticalMenuProps {
-  icon: string
-  name: string
-  children: MenuChildrenType[]
-  linkTo?: string
-}
-
-interface MenuChildrenType {
-  name: string
-  linkTo: string
-}
+import { VerticalMenuProps } from 'types'
 
 const Wrapper = styled.section`
   display: flex;
