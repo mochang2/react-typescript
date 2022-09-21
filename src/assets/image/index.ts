@@ -1,3 +1,4 @@
+import BlackHamburger from './black-hamburger.png'
 import MagnifyingIcon from './magnifying-icon.png'
 import MainLogo from './main-logo.png'
 import RedDelete from './red-delete.png'
@@ -16,6 +17,7 @@ import WhiteRightArrow from './white-right-arrow.png'
 import WhiteStationManageIcon from './white-station-manage-icon.png'
 
 export {
+  BlackHamburger,
   MagnifyingIcon,
   MainLogo,
   RedDelete,

@@ -20,7 +20,7 @@ interface FaqListProps {
 const PER_PAGE_COUNT = 10
 const HEADERS = ['글번호', '카테고리', '제목', '등록일', '등록자']
 
-const Table = styled.div<{ rowCount: number }>`
+const GridBox = styled.div<{ rowCount: number }>`
   display: grid;
   grid-template-columns: 100px 128px 128px minmax(128px, 1fr) 128px 128px;
   grid-template-rows: ${({ rowCount }) => `repeat(${rowCount}, 60px)`};
@@ -151,7 +151,7 @@ function FaqList({ faqs, fetchFaqs }: FaqListProps) {
         선택 삭제
       </TransparentButton>
       {isLoading && <PageLoading />}
-      <Table rowCount={currentPageFaqs(faqs, page).length + 1}>
+      <GridBox rowCount={currentPageFaqs(faqs, page).length + 1}>
         <HeaderCell>
           <Checkbox
             onChange={handleParentCheckbox}
@@ -185,7 +185,7 @@ function FaqList({ faqs, fetchFaqs }: FaqListProps) {
             </DataCell>
           </Fragment>
         ))}
-      </Table>
+      </GridBox>
       <Pagination
         currentPage={page}
         totalCount={faqs.length}

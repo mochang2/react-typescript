@@ -10,7 +10,7 @@ import {
   PageLoading
 } from 'components/common'
 import { Link } from 'react-router-dom'
-import { FaqList } from 'components/faq'
+import { List } from 'components/faq'
 import { useFaqCategories } from 'hooks'
 import { RedDelete } from 'assets/image'
 import ROUTES from 'routes/routeMap'
@@ -130,15 +130,15 @@ function Faq() {
         )}
       </Filter>
       <ButtonContainer>
-        <TransparentButton onClick={(e) => console.log(e)}>
-          카테고리 관리
+        <TransparentButton>
+          <Link to={ROUTES.faqCategoryManagement}>카테고리 관리</Link>
         </TransparentButton>
         <TransparentButton color={'#DF1F26'}>
           <Link to={ROUTES.faqRegister}>FAQ 등록</Link>
         </TransparentButton>
       </ButtonContainer>
       {faqs.length !== 0 && (
-        <FaqList faqs={getFilteredFaqs(faqs)} fetchFaqs={fetchFaqs} />
+        <List faqs={getFilteredFaqs(faqs)} fetchFaqs={fetchFaqs} />
       )}
       {isLoading && <PageLoading />}
     </Wrapper>

@@ -1,8 +1,9 @@
 import { useState, ChangeEvent, MouseEvent, Fragment } from 'react'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { Selection, TransparentButton } from 'components/common'
 import styled from 'styled-components'
 import { useFaqCategories } from 'hooks'
+import ROUTES from 'routes/routeMap'
 import { FaqFormType, FaqLocationType } from 'types'
 
 interface FaqFormContentProps {
@@ -130,6 +131,7 @@ function FaqFormContent({ onClick }: FaqFormContentProps) {
   const [title, setTitle] = useState(locationState.title ?? '')
   const [content, setContent] = useState(locationState.content ?? '')
   const { faqCategories } = useFaqCategories()
+  const navigate = useNavigate()
 
   const handleCategoryIndex = (event: MouseEvent) => {
     const element = event.target as HTMLElement
@@ -145,6 +147,10 @@ function FaqFormContent({ onClick }: FaqFormContentProps) {
   const handleContent = (event: ChangeEvent) => {
     const element = event.target as HTMLTextAreaElement
     setContent(element.value)
+  }
+
+  const handleCancel = () => {
+    navigate(`${ROUTES.notice}/${locationState.id}`)
   }
 
   const handleSubmit = () => {
@@ -185,8 +191,8 @@ function FaqFormContent({ onClick }: FaqFormContentProps) {
         </ContentContainer>
       </FormContainer>
       <ButtonContainer>
-        <TransparentButton>취소</TransparentButton>
-        <RegisterButton onClick={() => handleSubmit()}>등록</RegisterButton>
+        <TransparentButton onClick={handleCancel}>취소</TransparentButton>
+        <RegisterButton onClick={handleSubmit}>등록</RegisterButton>
       </ButtonContainer>
     </Fragment>
   )

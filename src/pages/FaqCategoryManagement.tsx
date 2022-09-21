@@ -1,12 +1,28 @@
-import { Fragment } from 'react'
+import styled from 'styled-components'
 import withLayout from 'hocs/Layout'
+import { Header } from 'components/common'
+import { CategoryCreationButton, CategoryList } from 'components/faq'
 
-function Faq() {
+const Wrapper = styled.section`
+  margin: 0 1.2vw 9.6vh;
+
+  position: relative;
+`
+
+const ButtonContainer = styled.div`
+  float: right;
+`
+
+function FaqCategoryManagement() {
   return (
-    <Fragment>
-      <div>여기는 FAQ 카테고리 페이지입니다.</div>
-    </Fragment>
+    <Wrapper>
+      <Header content={'FAQ'} route={'게시판 관리 > FAQ > 카테고리 관리'} />
+      <CategoryList />
+      <ButtonContainer>
+        <CategoryCreationButton />
+      </ButtonContainer>
+    </Wrapper>
   )
 }
 
-export default withLayout(Faq)
+export default withLayout(FaqCategoryManagement)

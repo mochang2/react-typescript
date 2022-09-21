@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { useNavigate, useLocation } from 'react-router-dom'
 import withLayout from 'hocs/Layout'
 import { Header, PageLoading } from 'components/common'
-import { FaqFormContent } from 'components/faq'
+import { FormContent } from 'components/faq'
 import api from 'apis/api'
 import ROUTES from 'routes/routeMap'
 import { FaqFormType, FaqLocationType } from 'types'
@@ -43,7 +43,7 @@ function FaqUpdate() {
   return (
     <Wrapper>
       <Header content={'FAQ'} route={'게시판 관리 > FAQ > FAQ 수정'} />
-      <FaqFormContent onClick={updateFaq} />
+      <FormContent onClick={updateFaq} />
       {isLoading && <PageLoading />}
     </Wrapper>
   )

@@ -30,11 +30,10 @@ const Category = styled.div`
   font-size: 1rem;
 
   &::after {
-    content: '|';
-
     position: absolute;
     right: 0;
 
+    content: '|';
     font-size: 1.2rem;
     color: #e5e5e5;
   }

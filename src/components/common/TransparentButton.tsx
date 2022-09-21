@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 interface ButtonProps {
   color?: string
-  onClick?: (event?: MouseEvent) => void
+  onClick?: (event: MouseEvent) => void
   children: ReactNode
 }
 

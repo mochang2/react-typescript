@@ -1,3 +1,4 @@
+import { useCallback } from 'react'
 import { useRecoilState } from 'recoil'
 import { FaqCategoryState } from 'stores/faq'
 import api from 'apis/api'
@@ -6,7 +7,7 @@ import { FaqCategoryType } from 'types'
 const useFaqCategories = (defaultCategory?: FaqCategoryType) => {
   const [faqCategories, setFaqCategories] = useRecoilState(FaqCategoryState)
 
-  async function fetchFaqCategories() {
+  const fetchFaqCategories = useCallback(async () => {
     try {
       const {
         data: { categories }
@@ -16,7 +17,7 @@ const useFaqCategories = (defaultCategory?: FaqCategoryType) => {
     } catch (err) {
       alert('카테고리를 가져오는데 실패했습니다. 제목을 먼저 입력해주세요.')
     }
-  }
+  }, [])
 
   if (faqCategories.length === 0) {
     fetchFaqCategories()

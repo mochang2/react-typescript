@@ -9,7 +9,7 @@ import {
   Dialogbox
 } from 'components/common'
 import api from 'apis/api'
-import { FaqDetailContent } from 'components/faq'
+import { DetailContent } from 'components/faq'
 import ROUTES from 'routes/routeMap'
 import { FaqDetailType } from 'types'
 import { useFaqCategories } from 'hooks'
@@ -103,7 +103,7 @@ function FaqDetail() {
       <Header content={'FAQ'} route={'게시판 관리 > FAQ > FAQ 상세'} />
       {faq && (
         <Fragment>
-          <FaqDetailContent
+          <DetailContent
             category={faq.category.name}
             title={faq.title}
             content={faq.content}
@@ -117,11 +117,7 @@ function FaqDetail() {
         </Fragment>
       )}
       {isLoading && <PageLoading />}
-      <Dialogbox
-        open={openDialog}
-        onClose={handleClose}
-        title="정말로 삭제하시겠습니까?"
-      >
+      <Dialogbox open={openDialog} title="정말로 삭제하시겠습니까?">
         <DialogButtonContainer>
           <TransparentButton onClick={handleAgreement}>예</TransparentButton>
           <TransparentButton onClick={handleClose}>아니오</TransparentButton>

@@ -6,7 +6,6 @@ interface DialogboxProps {
   title?: string
   subtitle?: string
   children?: ReactNode
-  onClose?: () => void
 }
 
 const Background = styled.div`
@@ -46,15 +45,9 @@ const SubTitle = styled.h5`
   margin: 1vh 1vw;
 `
 
-function Dialogbox({
-  open,
-  title,
-  subtitle,
-  children,
-  onClose
-}: DialogboxProps) {
+function Dialogbox({ open, title, subtitle, children }: DialogboxProps) {
   return open ? (
-    <Background onClick={onClose}>
+    <Background>
       <Wrapper>
         {Boolean(title) && <Title>{title}</Title>}
         {Boolean(subtitle) && <SubTitle>{subtitle}</SubTitle>}

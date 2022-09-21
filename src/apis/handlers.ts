@@ -205,7 +205,7 @@ const handlers = [
       })
     )
   }),
-  rest.delete('/api/faq', (req, res, ctx) => {
+  rest.delete('/api/faq', (_, res, ctx) => {
     return res(ctx.status(200), ctx.delay(100))
   }),
   rest.get('/api/faq/:id', (_, res, ctx) => {
@@ -233,8 +233,16 @@ const handlers = [
   rest.post('/api/faq', (_, res, ctx) => {
     return res(ctx.status(200), ctx.delay(100))
   }),
-  rest.put('/api/faq/:id', (req, res, ctx) => {
-    console.log(req.body)
+  rest.put('/api/faq/:id', (_, res, ctx) => {
+    return res(ctx.status(200), ctx.delay(100))
+  }),
+  rest.delete('/api/faq/categories', (_, res, ctx) => {
+    return res(ctx.status(200), ctx.delay(100))
+  }),
+  rest.put('/api/faq/category/:id', (_, res, ctx) => {
+    return res(ctx.status(200), ctx.delay(100))
+  }),
+  rest.post('/api/faq/category', (_, res, ctx) => {
     return res(ctx.status(200), ctx.delay(100))
   })
 ]
